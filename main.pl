@@ -1,12 +1,18 @@
-:- use_module(library(clpfd)). 
-:- use_module(library(statistics)).
 
 :- [betterSolver].
 :- [generator].
 
 % UI of the sudoku solver & generator application %
 
+?- [main].
+
+% TODO
+% 1. and 3. How to get user input of sudoku puzzle. CSV like https://github.com/declanherbertson/sudoku, or directly read in 2D array?
+% 3. Check if the difficulty calculator works after the puzzle read is complete
+% 2. Improve the appearance of the generated puzzle. At least separate consecutive puzzles
+
 % reference https://www.tutorialspoint.com/prolog/prolog_inputs_and_outputs.htm
+% To start the program, ?- main_menu.
 main_menu :-
       nl,
       write('1. Solve sudoku with the application'), nl,
@@ -24,6 +30,7 @@ process(1) :-
       write('Provide a sudoku puzzle here: '),
       read(Sudoku),
       complete(Sudoku),
+      write('***Display the solved sudoku here***')
       main_menu.
 
 process(2) :-
@@ -36,8 +43,8 @@ process(2) :-
 process(3) :-
       write('Provide a sudoku puzzle here: '),
       read(Sudoku),
-      write('***difficulty should be found here***'),
-      displayBoard(Sudoku),
+      difficulty(Sudoku, Difficulty),
+      write('The difficulty of the sudoku puzzle is '), write(Difficulty),
       main_menu.
 
 process(Input) :-
