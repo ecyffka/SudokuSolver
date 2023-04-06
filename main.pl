@@ -1,10 +1,12 @@
+:- use_module(library(clpfd)). 
+:- use_module(library(statistics)).
 
 :- [betterSolver].
 :- [generator].
 
 % UI of the sudoku solver & generator application %
 
-?- [main].
+% ?- [main].
 
 % TODO
 % 1. and 3. How to get user input of sudoku puzzle. CSV like https://github.com/declanherbertson/sudoku, or directly read in 2D array?
@@ -30,7 +32,7 @@ process(1) :-
       write('Provide a sudoku puzzle here: '),
       read(Sudoku),
       complete(Sudoku),
-      write('***Display the solved sudoku here***')
+      write('***Display the solved sudoku***'),
       main_menu.
 
 process(2) :-
