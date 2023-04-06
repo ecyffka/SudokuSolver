@@ -1,4 +1,5 @@
 %[4,5,3,7,8,1,2,6,9],[6,1,7,5,9,2,8,4,3],[8,9,2,6,4,3,7,5,1],[9,8,4,2,3,6,1,7,5],[1,7,6,9,5,8,3,2,4],[2,3,5,4,1,7,6,9,8],[3,6,9,8,7,5,4,1,2],[7,4,8,1,2,9,5,3,6],[5,2,1,3,6,4,9,8,7]
+% [4,5,3,7,8,1,2,6,9],[6,1,7,5,9,2,8,4,3],[8,9,2,6,4,3,7,5,1],[9,8,4,2,3,6,1,7,5],[1,7,6,9,5,8,3,2,4],[2,3,5,4,1,7,6,9,8],[3,6,9,8,7,5,4,1,2],[7,4,8,1,2,9,5,3,6],[5,2,1,3,6,4,9,Eight,7]
 
 % input: nine lists with nine numbers each, represents the nine rows of a sudoku grid from top to bottom
 % output: true if input is a completed sudoku puzzle (or provides solution to an incomplete puzzle)
