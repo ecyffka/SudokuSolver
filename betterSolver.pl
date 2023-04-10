@@ -60,4 +60,4 @@ complete([[A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).    
 
-% check(L) :- L ins 1..9, all_different(L).
+% check(L) :- length(L, 9), L ins 1..9, all_different(L).
