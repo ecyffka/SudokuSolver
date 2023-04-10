@@ -48,7 +48,7 @@ generateTemplate(S,MinD,MaxD,Template) :-
     randomCells(Blanks), 
     generateTemplate(MinD,MaxD,S,Blanks,Template,0).
 
-generateTemplate(MinD,MaxD,T,_,T,Failures) :- 
+generateTemplate(MinD,MaxD,T,_,T,_) :- 
     % generation is complete if this is true
     countSolutions(T,1), 
     difficulty(T,D), D >= MinD, D =< MaxD.
