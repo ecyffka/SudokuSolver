@@ -4,6 +4,7 @@
 :- [betterSolver].
 :- [generator].
 :- [testPuzzles].
+:- [hint].
 
 % UI of the sudoku solver & generator application %
 
@@ -19,7 +20,7 @@
 main_menu :-
       nl,
       write('1. Solve sudoku with the application'), nl,
-      write('2. Get a hint for a sudpku puzzle'),
+      write('2. Get a hint for a sudpku puzzle'), nl,
       write('3. Generate a sudoku'), nl,
       write('4. Find the difficulty of a sudoku'), nl,
       write('Choose from the options above or type "stop.": '),
@@ -31,7 +32,6 @@ process(stop) :-
       !.
 
 process(1) :-
-      write('option 1'), nl,
       write('Provide a sudoku puzzle here: '),
       % read(Sudoku),
       % complete(Sudoku),
@@ -50,9 +50,19 @@ solve_puzzle(Sudoku) :-
 
 get_puzzle(none, P) :-
       none(P).
-
 get_puzzle(beginner, P) :-
       beginner(P).
+get_puzzle(easy, P) :-
+      easy(P).
+get_puzzle(medium, P) :-
+      medium(P).
+get_puzzle(difficult, P) :-
+      difficult(P).
+get_puzzle(evil, P) :-
+      evil(P).
+get_puzzle(platinumBlonde, P) :-
+      platinumBlonde(P).
+
 /*
 sub_menu(Sudoku) :-
       write('1. Solve the sudoku'), nl,
@@ -63,10 +73,40 @@ sub_menu(Sudoku) :-
 */
 
 process(2) :-
-      write('option 2'), nl,
       write('Provide a sudoku puzzle here: '),
-      read(Sudoku).
+      read(Sudoku),
+      write('Hint type 1: A row, Hint type 2: A square: '),
+      read(HintType),
+      give_hint(HintType, Sudoku),
+      % write('Which row do you want a hint for?: '),
+      % read(RowNo),
+      % hint_puzzle(Sudoku, RowNo),
+      main_menu.
 
+give_hint(1, Sudoku) :-
+      write('Which row do you want a hint for?: '),
+      read(RowNo),
+      get_puzzle(Sudoku, P),
+      write('Original Puzzle'), nl,
+      displayBoard(P),
+      write('The Puzzle with the Hint on the Row '), write(RowNo), nl,
+      hintRow(RowNo, P).
+
+give_hint(2, Sudoku) :-
+      write('Which square do you want a hint for?: '),
+      read(SquareNo),
+      get_puzzle(Sudoku, P),
+      write('Original Puzzle'), nl,
+      displayBoard(P),
+      write('The Puzzle with the Hint on the Square '), write(SquareNo), nl,
+      hintSquare(SquareNo, P).
+
+hint_puzzle(Sudoku, RowNo) :-
+      get_puzzle(Sudoku, P),
+      write('Original Puzzle'), nl,
+      displayBoard(P),
+      write('The Puzzle with the Hint on the Row '), write(RowNo), nl,
+      hintRow(RowNo, P).
 
 process(3) :-
       write('Choose a difficulty - easy, medium, difficult, evil: '),
@@ -77,12 +117,10 @@ process(3) :-
 
 process(4) :-
       write('Provide a sudoku puzzle here: '),
-      % read(Sudoku),
-      % difficulty(Sudoku, Difficulty),
-      % read_sudoku(List1, List2, List3, List4, list5, List6, List7, List8, List9),
-      % difficulty([List1, List2, List3, List4, list5, List6, List7, List8, List9], Difficulty),
-      % write('The difficulty of the sudoku puzzle is '), write(Difficulty),
-      write('option 3 chosen'),
+      read(Sudoku),
+      get_puzzle(Sudoku, P),
+      difficulty(P, Difficulty),
+      write('The difficulty of the sudoku puzzle is '), write(Difficulty),
       main_menu.
 
 process(Input) :-
