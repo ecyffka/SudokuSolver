@@ -30,7 +30,7 @@ process(stop) :-
 
 % Process the option 1 - solve a sudoku puzzle, and goes back to the main menu
 process(1) :-
-      write('Provide a sudoku puzzle here: '),
+      write('Provide a sudoku puzzle here'),
       read(Sudoku),
       solvePuzzle(Sudoku),
       main.
@@ -48,32 +48,32 @@ solvePuzzle(Sudoku) :-
 % Gets user input for a sudoku puzzle and kind of hint they want, processes the hint, 
 % and goes back to the main menu.
 process(2) :-
-      write('Provide a sudoku puzzle here: '),
-      read(Sudoku),
-      write('Hint type 1: A row, Hint type 2: A square: '),
+      write('Hint type 1 - A row, Hint type 2 - A square'),
       read(HintType),
+      write('Provide a sudoku puzzle here'),
+      read(Sudoku),
       giveHint(HintType, Sudoku),
       main.
 
 % Gives the hint for a row. Displays the original puzzle and the board with the hint.
 giveHint(1, Sudoku) :-
-      write('Which row do you want a hint for?: '),
-      read(RowNo),
       getPuzzle(Sudoku, P),
       write('Original Puzzle'), nl,
       displayBoard(P),
+      write('Which row do you want a hint for?: '),
+      read(RowNo),
       write('The Puzzle with the Hint on the Row '), write(RowNo), nl,
       hintRow(RowNo, P).
 
 % Gives the hint for a square. Displays the original puzzle and the board with the hint.
 giveHint(2, Sudoku) :-
-      write('Which square do you want a hint for?: '),
-      read(SquareNo),
       getPuzzle(Sudoku, P),
       write('Original Puzzle'), nl,
       displayBoard(P),
-      write('The Puzzle with the Hint on the Square '), write(SquareNo), nl,
-      hintSquare(SquareNo, P).
+      write('Which square do you want a hint for?'), nl,
+      write('Row'), read(RowNo), write('Column'), read(ColNo),
+      write('The Puzzle with the Hint on the Square '), write('['), write(RowNo), write(', '), write(ColNo), write(']'), nl,
+      hintSquareUI(RowNo, ColNo, P).
 
 % Processes option 3 - generate a puzzle with a given difficulty
 % Gets a user input for the difficulty, generate a puzzle and displays it.
@@ -81,15 +81,14 @@ giveHint(2, Sudoku) :-
 process(3) :-
       write('Choose a difficulty - easy, medium, difficult, evil: '),
       read(Difficulty),
-      generate(Puzzle, Difficulty),
-      displayBoard(Puzzle),
+      generate(_, Difficulty),
       main.
 
 % Processes option 4 - detect the difficulty of a sudoku puzzle.
 % Gets the user input for a puzzle and display its difficulty score.
 % Goes back to the main menu.
 process(4) :-
-      write('Provide a sudoku puzzle here: '),
+      write('Provide a sudoku puzzle here'),
       read(Sudoku),
       getPuzzle(Sudoku, P),
       write('The Puzzle given'), nl,

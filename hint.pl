@@ -35,4 +35,4 @@ checkAll([Row1|Rows]) :-
     check(Row1),
     checkAll(Rows).
 
-check(L) :- L ins 1..9, all_different(L).
+% check(L) :- L ins 1..9, all_different(L).
