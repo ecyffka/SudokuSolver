@@ -1,6 +1,3 @@
-:- use_module(library(clpfd)). 
-:- use_module(library(statistics)).
-
 :- [betterSolver].
 :- [generator].
 :- [testPuzzles].
@@ -17,6 +14,7 @@
 % Shows the options for the user and get user input of the option
 main_menu :-
       nl,
+      write('---Main Menu---')
       write('1. Solve sudoku with the application'), nl,
       write('2. Get a hint for a sudoku puzzle'), nl,
       write('3. Generate a sudoku'), nl,
@@ -45,23 +43,6 @@ solve_puzzle(Sudoku) :-
       displayBoard(P),
       write('Solved Puzzle'), nl,
       complete(P).
-
-% Get the 2D array of the sudoku board according to the user input
-% The first argument is the name of the board, and P is the 2D array
-get_puzzle(none, P) :-
-      none(P).
-get_puzzle(beginner, P) :-
-      beginner(P).
-get_puzzle(easy, P) :-
-      easy(P).
-get_puzzle(medium, P) :-
-      medium(P).
-get_puzzle(difficult, P) :-
-      difficult(P).
-get_puzzle(evil, P) :-
-      evil(P).
-get_puzzle(platinumBlonde, P) :-
-      platinumBlonde(P).
 
 % Process option 2 - Hint
 % Gets user input for a sudoku puzzle and kind of hint they want, processes the hint, 
@@ -114,7 +95,7 @@ process(4) :-
       write('The Puzzle given'), nl,
       displayBoard(P),
       difficulty(P, Score),
-      write('The difficulty of the sudoku puzzle is '), write(Score),
+      write('The difficulty of the sudoku puzzle is '), write(Score), nl,
       main_menu.
 
 % Handles an invalid input for the main menu options.
