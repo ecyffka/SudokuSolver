@@ -1,4 +1,5 @@
 :- use_module(library(clpfd)).
+:- [generator].
 
 % easy: [5,2,A3,B1,B2,1,C1,C2,C3],[A4,A5,4,B4,2,B6,C4,C5,C6],[A7,A8,1,3,B8,B9,8,C8,C9],[7,D2,D3,E1,9,5,F1,6,3],[D4,D5,D6,E4,E5,E6,F4,F5,F6],[8,6,D9,7,1,E9,F7,F8,9],[G1,G2,8,H1,H2,9,2,I2,I3],[G4,G5,G6,H4,5,H6,3,I5,I6],[G7,G8,G9,6,H8,H9,I7,4,7]
 
@@ -59,4 +60,4 @@ complete([[A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).    
 
-check(L) :- L ins 1..9, all_different(L).
+% check(L) :- L ins 1..9, all_different(L).
