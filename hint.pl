@@ -1,11 +1,12 @@
 :- use_module(library(clpfd)).
+:- [generator].
 
 % easy: [5,2,A3,B1,B2,1,C1,C2,C3],[A4,A5,4,B4,2,B6,C4,C5,C6],[A7,A8,1,3,B8,B9,8,C8,C9],[7,D2,D3,E1,9,5,F1,6,3],[D4,D5,D6,E4,E5,E6,F4,F5,F6],[8,6,D9,7,1,E9,F7,F8,9],[G1,G2,8,H1,H2,9,2,I2,I3],[G4,G5,G6,H4,5,H6,3,I5,I6],[G7,G8,G9,6,H8,H9,I7,4,7]
 
 % hintSquare: fills in the requested box in a given Sudoku puzzle (plus any equivalent boxes..)
 % input: a variable corresponding to a single square in the grid followed by nine lists with nine numbers each, represents the nine rows of a sudoku grid from top to bottom
 % output: true if input is a valid sudoku puzzle, provide partial soution
-hintSquare(X, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintSquare(X, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -13,7 +14,7 @@ hintSquare(X, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -37,7 +38,7 @@ hintSquare(X, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
 % hintRow: fills in the requested row [1-9] in a given Sudoku puzzle (plus any equivalent boxes..)
 % input: a row number [1-9] followed by nine lists with nine numbers each, represents the nine rows of a sudoku grid from top to bottom
 % output: true if input is a valid sudoku puzzle, provide partial soution
-hintRow(1, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(1, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -45,7 +46,7 @@ hintRow(1, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -66,7 +67,7 @@ hintRow(1, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).    
 
-hintRow(2, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(2, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -74,7 +75,7 @@ hintRow(2, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -95,7 +96,7 @@ hintRow(2, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(3, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(3, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -103,7 +104,7 @@ hintRow(3, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -124,7 +125,7 @@ hintRow(3, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(4, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(4, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -132,7 +133,7 @@ hintRow(4, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -153,7 +154,7 @@ hintRow(4, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(5, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(5, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -161,7 +162,7 @@ hintRow(5, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -182,7 +183,7 @@ hintRow(5, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(6, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(6, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -190,7 +191,7 @@ hintRow(6, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -211,7 +212,7 @@ hintRow(6, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(7, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(7, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -219,7 +220,7 @@ hintRow(7, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -240,7 +241,7 @@ hintRow(7, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(8, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(8, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -248,7 +249,7 @@ hintRow(8, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -269,7 +270,7 @@ hintRow(8, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [G4,G5,G6,H4,H5,H6,I4,I5,I6],
         [G7,G8,G9,H7,H8,H9,I7,I8,I9]]).
 
-hintRow(9, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
+hintRow(9, [[A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [A4,A5,A6,B4,B5,B6,C4,C5,C6],
     [A7,A8,A9,B7,B8,B9,C7,C8,C9],
     [D1,D2,D3,E1,E2,E3,F1,F2,F3],
@@ -277,7 +278,7 @@ hintRow(9, [A1,A2,A3,B1,B2,B3,C1,C2,C3],
     [D7,D8,D9,E7,E8,E9,F7,F8,F9],
     [G1,G2,G3,H1,H2,H3,I1,I2,I3],
     [G4,G5,G6,H4,H5,H6,I4,I5,I6],
-    [G7,G8,G9,H7,H8,H9,I7,I8,I9]) :- 
+    [G7,G8,G9,H7,H8,H9,I7,I8,I9]]) :- 
     checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
         [A4,A5,A6,B4,B5,B6,C4,C5,C6],
         [A7,A8,A9,B7,B8,B9,C7,C8,C9],
@@ -335,4 +336,4 @@ checkAll([A1,A2,A3,B1,B2,B3,C1,C2,C3],
     check([C2,C5,C8,F2,F5,F8,I2,I5,I8]),
     check([C3,C6,C9,F3,F6,F9,I3,I6,I9]).
 
-check(L) :- L ins 1..9, all_different(L).
+% check(L) :- L ins 1..9, all_different(L).
