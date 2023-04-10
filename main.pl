@@ -10,11 +10,11 @@
 % ?- [main].
 
 % reference https://www.tutorialspoint.com/prolog/prolog_inputs_and_outputs.htm
-% To start the program, ?- main_menu.
+% To start the program, ?- main.
 % Shows the options for the user and get user input of the option
-main_menu :-
+main :-
       nl,
-      write('---Main Menu---')
+      write('---Main Menu---'), nl,
       write('1. Solve sudoku with the application'), nl,
       write('2. Get a hint for a sudoku puzzle'), nl,
       write('3. Generate a sudoku'), nl,
@@ -32,13 +32,13 @@ process(stop) :-
 process(1) :-
       write('Provide a sudoku puzzle here: '),
       read(Sudoku),
-      solve_puzzle(Sudoku),
-      main_menu.
+      solvePuzzle(Sudoku),
+      main.
 
 % Helper function of process(1)
 % Get a puzzle, the 2D array of the board, and display the original and solved puzzle.
-solve_puzzle(Sudoku) :-
-      get_puzzle(Sudoku, P),
+solvePuzzle(Sudoku) :-
+      getPuzzle(Sudoku, P),
       write('Original Puzzle'), nl,
       displayBoard(P),
       write('Solved Puzzle'), nl,
@@ -52,24 +52,24 @@ process(2) :-
       read(Sudoku),
       write('Hint type 1: A row, Hint type 2: A square: '),
       read(HintType),
-      give_hint(HintType, Sudoku),
-      main_menu.
+      giveHint(HintType, Sudoku),
+      main.
 
 % Gives the hint for a row. Displays the original puzzle and the board with the hint.
-give_hint(1, Sudoku) :-
+giveHint(1, Sudoku) :-
       write('Which row do you want a hint for?: '),
       read(RowNo),
-      get_puzzle(Sudoku, P),
+      getPuzzle(Sudoku, P),
       write('Original Puzzle'), nl,
       displayBoard(P),
       write('The Puzzle with the Hint on the Row '), write(RowNo), nl,
       hintRow(RowNo, P).
 
 % Gives the hint for a square. Displays the original puzzle and the board with the hint.
-give_hint(2, Sudoku) :-
+giveHint(2, Sudoku) :-
       write('Which square do you want a hint for?: '),
       read(SquareNo),
-      get_puzzle(Sudoku, P),
+      getPuzzle(Sudoku, P),
       write('Original Puzzle'), nl,
       displayBoard(P),
       write('The Puzzle with the Hint on the Square '), write(SquareNo), nl,
@@ -83,7 +83,7 @@ process(3) :-
       read(Difficulty),
       generate(Puzzle, Difficulty),
       displayBoard(Puzzle),
-      main_menu.
+      main.
 
 % Processes option 4 - detect the difficulty of a sudoku puzzle.
 % Gets the user input for a puzzle and display its difficulty score.
@@ -91,15 +91,15 @@ process(3) :-
 process(4) :-
       write('Provide a sudoku puzzle here: '),
       read(Sudoku),
-      get_puzzle(Sudoku, P),
+      getPuzzle(Sudoku, P),
       write('The Puzzle given'), nl,
       displayBoard(P),
       difficulty(P, Score),
       write('The difficulty of the sudoku puzzle is '), write(Score), nl,
-      main_menu.
+      main.
 
 % Handles an invalid input for the main menu options.
 process(Input) :-
       write('Chosen option is '), write(Input), nl,
       write('Try again with a valid option.'),
-      main_menu.
+      main.

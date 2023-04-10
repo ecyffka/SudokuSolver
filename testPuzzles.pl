@@ -89,17 +89,17 @@ platinumBlonde(P) :- P = [  % 1943
 
 % Get the 2D array of the sudoku board according to the user input
 % The first argument is the name of the board, and P is the 2D array
-get_puzzle(none, P) :-
+getPuzzle(none, P) :-
       none(P).
-get_puzzle(beginner, P) :-
+getPuzzle(beginner, P) :-
       beginner(P).
-get_puzzle(easy, P) :-
+getPuzzle(easy, P) :-
       easy(P).
-get_puzzle(medium, P) :-
+getPuzzle(medium, P) :-
       medium(P).
-get_puzzle(difficult, P) :-
+getPuzzle(difficult, P) :-
       difficult(P).
-get_puzzle(evil, P) :-
+getPuzzle(evil, P) :-
       evil(P).
-get_puzzle(platinumBlonde, P) :-
+getPuzzle(platinumBlonde, P) :-
       platinumBlonde(P).
